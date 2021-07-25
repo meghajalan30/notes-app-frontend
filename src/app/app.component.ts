@@ -33,12 +33,7 @@ export class AppComponent implements OnInit{
 
   }
 
-  // selectFile(event){
-  //   console.log(event);
-  //   console.log(event.target.value);
-  //   console.log(event.target.value.replace(/C:\\fakepath\\/i, ''));
-  //   this.noFileChosen=event.target.value.replace(/C:\\fakepath\\/i, '');
-  // }
+ 
 
   getNotes(){
     this.notesService.getNotes().subscribe(notesData => {
