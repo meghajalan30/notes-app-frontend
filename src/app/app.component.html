@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" formControlName="title" class="form-control">
+                    <span class="help-block"
+                        *ngIf="!notesForm.get('title').valid && notesForm.get('title').touched">Title is
+                        required.</span>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" formControlName="description" class="form-control">
+                    <span class="help-block"
+                        *ngIf="!notesForm.get('description').valid && notesForm.get('description').touched">Description
+                        is required.</span>
+                </div>
+                <div class="tags_border">
+                    <div class="form-group">
+                        <label>Tags:</label>
+                        <input type="text" formControlName="tag1" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="tag2" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="tag3" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reminder">Reminder</label>
+                    <input type="date" id="reminder" formControlName="reminder" class="form-control">
+                </div>
+
+                <!-- <div class="form-group" style="border:1px solid lightgrey; padding:14px">
+                    <input type="button" id="loadFileXml" value="Choose File"
+                        onclick="document.getElementById('file').click();" />
+                    <input type="file" style="display:none;" id="file" name="file" (change)="selectFile($event)" class="form-control"/>
+                    <span>{{noFileChosen}}</span>
+                </div> -->
+
+
+                <button type="submit" class="btn btn-primary" [disabled]="!notesForm.valid">Save</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <p *ngIf="noContent">Sorry, we couldn't find any data for that query!</p>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let note of notesList">
+                    <h3>{{note.id}} - {{note.title}}</h3>
+                    <p>{{note.description}}</p>
+                    <p>Reminder: {{note.reminder}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
